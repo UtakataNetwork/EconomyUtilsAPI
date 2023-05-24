@@ -2,6 +2,7 @@ package work.utakatanet.economyutilsapi
 
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.java.JavaPlugin
+import work.utakatanet.economyutilsapi.util.VaultApiHelper
 
 
 class EconomyUtilsAPI : JavaPlugin() {
@@ -9,6 +10,8 @@ class EconomyUtilsAPI : JavaPlugin() {
     companion object {
 
         lateinit var vaultEconomy: Economy private set
+
+        lateinit var vaultApiHelper: VaultApiHelper private set
 
     }
 
@@ -23,6 +26,9 @@ class EconomyUtilsAPI : JavaPlugin() {
             logger.warning("VaultAPIとの連携に失敗しました")
             pluginLoader.disablePlugin(this)
         }
+
+        vaultApiHelper = VaultApiHelper()
+
     }
     override fun onDisable() {
         // Plugin shutdown logic
