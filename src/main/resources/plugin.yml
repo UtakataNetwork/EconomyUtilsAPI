@@ -1,0 +1,4 @@
+name: EconomyUtilsAPI
+version: '${version}'
+main: work.utakatanet.economyutilsapi.EconomyUtilsAPI
+api-version: 1.19
