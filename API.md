@@ -3,7 +3,7 @@
 ## APIを取得する
 ### Java
 ```java
-EconomyUtilsApi ecoApi = EconomyUtilsAPI.api;
+public static final EconomyUtilsApi ecoApi = EconomyUtilsAPI.api;
 ```
 ### Kotlin
 ```kotlin
@@ -52,3 +52,26 @@ DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側が自動でデータベ�
 **ショップでの購入時**  
 アクション: `QuickShopで購入`  
 理由: `DIAMOND(1個)(ショップID: 918)`
+
+### getBalance メソッド
+プレイヤーの所持金を取得します。
+
+#### 引数
+| 引数     | 型      | 説明         |
+|--------|--------|------------|
+| uuid   | UUID   | プレイヤーのUUID |
+
+#### 返り値
+Double: プレイヤーの所持金
+
+### hasMoney(UUID) メソッド
+プレイヤーがお金を持っているかを取得します
+
+#### 引数
+| 引数     | 型      | 説明         |
+|--------|--------|------------|
+| uuid   | UUID   | プレイヤーのUUID |
+
+#### 返り値
+true → 持っている  
+false → 持っていない
