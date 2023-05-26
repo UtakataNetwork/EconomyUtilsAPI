@@ -3,6 +3,9 @@ package work.utakatanet.economyutilsapi
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
+import work.utakatanet.economyutilsapi.api.EconomyUtilsApi
+import work.utakatanet.economyutilsapi.api.impl.EconomyUtilsApiImpl
+
 import work.utakatanet.economyutilsapi.util.DatabaseHelper
 import work.utakatanet.economyutilsapi.util.TransactionLogHelper
 import work.utakatanet.economyutilsapi.util.VaultApiHelper
@@ -20,6 +23,8 @@ class EconomyUtilsAPI : JavaPlugin() {
         lateinit var vaultEconomy: Economy private set
 
         lateinit var transactionLogHelper: TransactionLogHelper private set
+
+        lateinit var api: EconomyUtilsApi private set
 
     }
 
@@ -43,6 +48,9 @@ class EconomyUtilsAPI : JavaPlugin() {
 
         // 取引ログ関連
         transactionLogHelper = TransactionLogHelper(databaseHelper)
+
+        // API
+        api = EconomyUtilsApiImpl()
 
     }
     override fun onDisable() {
