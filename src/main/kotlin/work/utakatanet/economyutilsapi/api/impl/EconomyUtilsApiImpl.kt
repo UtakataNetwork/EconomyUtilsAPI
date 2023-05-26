@@ -12,7 +12,7 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
     private val vaultApiHelper = EconomyUtilsAPI.vaultApiHelper
     private val transactionLogHelper = EconomyUtilsAPI.transactionLogHelper
 
-    override fun depositPlayer(uuid: UUID, amount: Double, reason: String): Boolean {
+    override fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
         // キャンセルされたら
@@ -22,11 +22,11 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
         vaultApiHelper.depositPlayer(uuid, amount)
 
         // ロギング処理
-        return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, amount, reason)
+        return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, amount, action, reason)
 
     }
 
-    override fun withdrawPlayer(uuid: UUID, amount: Double, reason: String): Boolean {
+    override fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
         // キャンセルされたら
@@ -36,7 +36,7 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
         vaultApiHelper.withdrawPlayer(uuid, amount)
 
         // ロギング処理
-        return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, amount, reason)
+        return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, amount, action, reason)
 
     }
 

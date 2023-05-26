@@ -9,11 +9,12 @@ interface EconomyUtilsApi {
      *
      * @param uuid 入金先のプレイヤーのUUID
      * @param amount 入金する金額
+     * @param action 簡単な理由
      * @param reason 入金する理由
      *
      * @return お金が入金されたか(キャンセルされた場合にfalseを返却)
      */
-    fun depositPlayer(uuid: UUID, amount: Double, reason: String): Boolean
+    fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean
 
 
     /**
@@ -21,10 +22,11 @@ interface EconomyUtilsApi {
      *
      * @param uuid 出金元のプレイヤーのUUID
      * @param amount 出金する金額
+     * @param action 簡単な理由
      * @param reason 出金する理由
      *
      * @return お金が出金されたか(キャンセルされた場合にfalseを返却)
      */
-    fun withdrawPlayer(uuid: UUID, amount: Double, reason: String): Boolean
+    fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean
 
 }
