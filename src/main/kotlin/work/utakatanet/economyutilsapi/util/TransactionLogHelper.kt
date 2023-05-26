@@ -11,7 +11,7 @@ class TransactionLogHelper(private val dbh: DatabaseHelper) {
 
     private val plugin = EconomyUtilsAPI.plugin
 
-    fun addTransactionLog(uuid: UUID, type: TransactionType, amount: Double, action: String, reason: String): Boolean {
+    fun addTransactionLog(uuid: UUID, type: TransactionType, afterMoney: Double, amount: Double, action: String, reason: String): Boolean {
 
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), type, amount, reason)
 
@@ -19,7 +19,7 @@ class TransactionLogHelper(private val dbh: DatabaseHelper) {
 
         if (event.isCancelled) return false
 
-        return dbh.addTransactionLog(uuid, type, amount, action, reason)
+        return dbh.addTransactionLog(uuid, type, afterMoney, amount, action, reason)
     }
 
     fun getPlayerTransactionLog(limit: Int, offSet: Int, uuid: UUID): MutableMap<Int, TransactionLog> {

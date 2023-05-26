@@ -61,7 +61,7 @@ class DatabaseHelper {
 
             // テーブルが存在しなければ
             if (!transactionLogTable.next()) {
-                val ps = con.prepareStatement("CREATE TABLE `eco_transactionLog` (`id` INT AUTO_INCREMENT, `uuid` VARCHAR(100) NOT NULL DEFAULT '', `type` VARCHAR(50) NOT NULL DEFAULT '', `amount` DOUBLE NOT NULL DEFAULT 0, `action` VARCHAR(500) NOT NULL DEFAULT '', `reason` VARCHAR(1000) NOT NULL DEFAULT '', `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `updated_at` TIMESTAMP DEFAULT  CURRENT_TIMESTAMP, PRIMARY KEY (`id`));")
+                val ps = con.prepareStatement("CREATE TABLE `eco_transactionLog` (`id` INT AUTO_INCREMENT, `uuid` VARCHAR(100) NOT NULL DEFAULT '', `type` VARCHAR(50) NOT NULL DEFAULT '', `afterMoney` DOUBLE NOT NULL DEFAULT 0, `amount` DOUBLE NOT NULL DEFAULT 0, `action` VARCHAR(500) NOT NULL DEFAULT '', `reason` VARCHAR(1000) NOT NULL DEFAULT '', `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `updated_at` TIMESTAMP DEFAULT  CURRENT_TIMESTAMP, PRIMARY KEY (`id`));")
                 ps.executeUpdate()
             }
         }catch (e: SQLException) {
@@ -76,22 +76,24 @@ class DatabaseHelper {
      *
      * @param uuid プレイヤーのUUID
      * @param type 取引タイプ(入金, 出金など)
+     * @param afterMoney 取引後の残高
      * @param amount 金額
      * @param action 簡単な理由
      * @param reason 取引の理由
      *
      * @return 正しく登録処理が実行されたか
      */
-    fun addTransactionLog(uuid: UUID, type: TransactionType, amount: Double, action: String, reason: String): Boolean {
+    fun addTransactionLog(uuid: UUID, type: TransactionType, afterMoney: Double, amount: Double, action: String, reason: String): Boolean {
         try {
             val con = connection
 
-            val psCreate = con.prepareStatement("INSERT INTO `eco_transactionLog` (`uuid`, `type`, `amount`, `action`, `reason`) VALUES (?, ?, ?, ?, ?);")
+            val psCreate = con.prepareStatement("INSERT INTO `eco_transactionLog` (`uuid`, `type`, `afterMoney`, `amount`, `action`, `reason`) VALUES (?, ?, ?, ?, ?, ?);")
             psCreate.setString(1, uuid.toString())
             psCreate.setString(2, type.name)
-            psCreate.setDouble(3, amount)
-            psCreate.setString(4, action)
-            psCreate.setString(5, reason)
+            psCreate.setDouble(3, afterMoney)
+            psCreate.setDouble(4, amount)
+            psCreate.setString(5, action)
+            psCreate.setString(6, reason)
 
             psCreate.executeUpdate()
 

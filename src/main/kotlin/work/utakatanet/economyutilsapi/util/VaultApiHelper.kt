@@ -1,6 +1,7 @@
 package work.utakatanet.economyutilsapi.util
 
 import org.bukkit.Bukkit
+import org.bukkit.OfflinePlayer
 import work.utakatanet.economyutilsapi.EconomyUtilsAPI
 import java.util.UUID
 
@@ -28,6 +29,11 @@ class VaultApiHelper {
 
         vaultEconomy.withdrawPlayer(player, amount)
 
+    }
+
+    fun getPlayerBalance(uuid: UUID): Double {
+        val player = Bukkit.getOfflinePlayer(uuid)
+        return vaultEconomy.getBalance(player)
     }
 
 }

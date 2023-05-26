@@ -20,9 +20,10 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
 
         // 入金処理
         vaultApiHelper.depositPlayer(uuid, amount)
+        val afterMoney = vaultApiHelper.getPlayerBalance(uuid)
 
         // ロギング処理
-        return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, amount, action, reason)
+        return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, afterMoney, amount, action, reason)
 
     }
 
@@ -34,9 +35,10 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
 
         // 出金処理
         vaultApiHelper.withdrawPlayer(uuid, amount)
+        val afterMoney = vaultApiHelper.getPlayerBalance(uuid)
 
         // ロギング処理
-        return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, amount, action, reason)
+        return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, afterMoney, amount, action, reason)
 
     }
 
