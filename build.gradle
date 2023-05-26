@@ -1,6 +1,13 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.9.0-Beta'
+    id 'com.github.johnrengelman.shadow' version '8.+' // FatJar用
+}
+
+jar {
+    manifest {
+        attributes "Main-Class" : "work.utakatanet.economyutilsapi.EconomyUtilsAPI"
+    }
 }
 
 group = 'work.utakatanet'
@@ -20,8 +27,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT" // SpigotAPI
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8" // Kotlin
     compileOnly "com.github.MilkBowl:VaultAPI:1.7" // VaultAPI
 }
 
@@ -50,5 +57,5 @@ processResources {
     }
 }
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
