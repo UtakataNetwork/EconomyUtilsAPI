@@ -4,6 +4,7 @@ import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import work.utakatanet.economyutilsapi.util.DatabaseHelper
+import work.utakatanet.economyutilsapi.util.TransactionLogHelper
 import work.utakatanet.economyutilsapi.util.VaultApiHelper
 
 
@@ -18,7 +19,7 @@ class EconomyUtilsAPI : JavaPlugin() {
         lateinit var vaultApiHelper: VaultApiHelper private set
         lateinit var vaultEconomy: Economy private set
 
-
+        lateinit var transactionLogHelper: TransactionLogHelper private set
 
     }
 
@@ -39,6 +40,9 @@ class EconomyUtilsAPI : JavaPlugin() {
 
         // データベース関連
         databaseHelper = DatabaseHelper()
+
+        // 取引ログ関連
+        transactionLogHelper = TransactionLogHelper(databaseHelper)
 
     }
     override fun onDisable() {
