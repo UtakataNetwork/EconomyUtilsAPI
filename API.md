@@ -1,4 +1,15 @@
 # EconomyUtilsAPI
+
+## APIを取得する
+### Java
+```java
+EconomyUtilsApi ecoApi = EconomyUtilsAPI.api;
+```
+### Kotlin
+```kotlin
+val ecoApi = EconomyUtilsAPI.api
+```
+
 ### depositPlayer メソッド
 プレイヤーの口座にお金を入金します。
 #### 引数
