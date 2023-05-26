@@ -9,7 +9,7 @@
 | action | String | 簡単な理由      |
 | reason | String | 入金する理由     |
 
-DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側で自動でデータベースに記録されます。
+DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側で自動でデータベースに記録します。
 
 #### 例
 **/payでの入金時**  
@@ -31,7 +31,7 @@ DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側で自動でデータベ�
 | action | String | 簡単な理由      |
 | reason | String | 出金する理由     |
 
-DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側で自動でデータベースに記録されます。
+DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側で自動でデータベースに記録します。
 
 #### 例
 **/payでの出金時**  
