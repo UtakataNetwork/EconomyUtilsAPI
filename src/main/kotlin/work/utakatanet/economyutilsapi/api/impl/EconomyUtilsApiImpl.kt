@@ -5,6 +5,7 @@ import work.utakatanet.economyutilsapi.EconomyUtilsAPI
 import work.utakatanet.economyutilsapi.api.EconomyUtilsApi
 import work.utakatanet.economyutilsapi.api.event.TransactionEvent
 import work.utakatanet.economyutilsapi.data.TransactionType
+import java.math.BigDecimal
 import java.util.*
 
 class EconomyUtilsApiImpl: EconomyUtilsApi {
@@ -12,6 +13,7 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
     private val vaultApiHelper = EconomyUtilsAPI.vaultApiHelper
     private val transactionLogHelper = EconomyUtilsAPI.transactionLogHelper
 
+    // プレイヤーの口座に入金
     override fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
@@ -26,7 +28,12 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
         return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, afterMoney, amount, action, reason)
 
     }
+    override fun depositPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean {
+        return depositPlayer(uuid, amount.toDouble(), action, reason)
+    }
 
+
+    // プレイヤーの口座から出金
     override fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
@@ -40,6 +47,9 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
         // ロギング処理
         return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, afterMoney, amount, action, reason)
 
+    }
+    override fun withdrawPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean {
+        return withdrawPlayer(uuid, amount.toDouble(), action, reason)
     }
 
 }

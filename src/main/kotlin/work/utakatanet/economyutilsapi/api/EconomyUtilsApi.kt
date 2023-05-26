@@ -1,5 +1,6 @@
 package work.utakatanet.economyutilsapi.api
 
+import java.math.BigDecimal
 import java.util.UUID
 
 interface EconomyUtilsApi {
@@ -15,6 +16,7 @@ interface EconomyUtilsApi {
      * @return お金が入金されたか(キャンセルされた場合にfalseを返却)
      */
     fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean
+    fun depositPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean
 
 
     /**
@@ -28,5 +30,7 @@ interface EconomyUtilsApi {
      * @return お金が出金されたか(キャンセルされた場合にfalseを返却)
      */
     fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean
+    fun withdrawPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean
+
 
 }
