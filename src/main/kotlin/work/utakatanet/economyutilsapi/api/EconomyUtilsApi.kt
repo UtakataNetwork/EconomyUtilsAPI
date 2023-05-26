@@ -33,4 +33,33 @@ interface EconomyUtilsApi {
     fun withdrawPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean
 
 
+    /**
+     * プレイヤーの残高を取得します
+     *
+     * @param uuid プレイヤーのUUID
+     *
+     * @return プレイヤーの残高
+     */
+    fun getBalance(uuid: UUID): Double
+
+
+    /**
+     * プレイヤーの残高があるのかを確認します
+     *
+     * @param uuid プレイヤーのUUID
+     *
+     * @return 残高があるか
+     */
+    fun hasMoney(uuid: UUID): Boolean
+
+
+    /**
+     * プレイヤーが指定された金額を持っているのかを確認します
+     *
+     * @param uuid プレイヤーのUUID
+     *
+     * @return 指定した金額以上の残高があるか
+     */
+    fun hasMoney(uuid: UUID, amount: Double): Boolean
+    fun hasMoney(uuid: UUID, amount: BigDecimal): Boolean
 }

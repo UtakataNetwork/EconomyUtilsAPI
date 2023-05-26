@@ -35,4 +35,12 @@ class VaultApiHelper {
         return vaultEconomy.getBalance(player)
     }
 
+    fun hasMoney(uuid: UUID): Boolean {
+        return getPlayerBalance(uuid) > 0.0
+    }
+
+    fun hasMoney(uuid: UUID, amount: Double): Boolean {
+        return getPlayerBalance(uuid) >= amount
+    }
+
 }

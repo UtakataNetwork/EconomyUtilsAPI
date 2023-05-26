@@ -52,4 +52,26 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
         return withdrawPlayer(uuid, amount.toDouble(), action, reason)
     }
 
+
+    // プレイヤーの残高を取得
+    override fun getBalance(uuid: UUID): Double {
+        return vaultApiHelper.getPlayerBalance(uuid)
+    }
+
+
+    // プレイヤーの残高があるのか確認
+    override fun hasMoney(uuid: UUID): Boolean {
+        return vaultApiHelper.hasMoney(uuid)
+    }
+
+
+    // 指定した金額以上の残高があるか確認
+    override fun hasMoney(uuid: UUID, amount: Double): Boolean {
+        return vaultApiHelper.hasMoney(uuid, amount)
+    }
+
+    override fun hasMoney(uuid: UUID, amount: BigDecimal): Boolean {
+        return hasMoney(uuid, amount.toDouble())
+    }
+
 }
