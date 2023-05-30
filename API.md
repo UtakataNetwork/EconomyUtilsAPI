@@ -1,13 +1,30 @@
 # EconomyUtilsAPI
 
 ## APIを取得する
+API取得の例です。  
+メインクラスにコードを書く場合は、onEnableメソッドの中などに書いてください。
 ### Java
 ```java
 public static final EconomyUtilsApi ecoApi = EconomyUtilsAPI.api;
+
+// または
+public static EconomyUtilsApi ecoApi = null;
+
+@Override
+public void onEnable() {
+  ecoApi = EconomyUtilsAPI.api;
+}
 ```
 ### Kotlin
 ```kotlin
 val ecoApi = EconomyUtilsAPI.api
+
+// または
+lateinit var ecoApi: EconomyUtilsApi private set
+
+override fun onEnable() {
+  ecoApi = EconomyUtilsAPI.api
+}
 ```
 
 ### depositPlayer メソッド
