@@ -1,4 +1,32 @@
 # EconomyUtilsAPI
+
+## APIを取得する
+API取得の例です。  
+メインクラスにコードを書く場合は、onEnableメソッドの中などに書いてください。
+### Java
+```java
+public static final EconomyUtilsApi ecoApi = EconomyUtilsAPI.api;
+
+// または
+public static EconomyUtilsApi ecoApi = null;
+
+@Override
+public void onEnable() {
+  ecoApi = EconomyUtilsAPI.api;
+}
+```
+### Kotlin
+```kotlin
+val ecoApi = EconomyUtilsAPI.api
+
+// または
+lateinit var ecoApi: EconomyUtilsApi private set
+
+override fun onEnable() {
+  ecoApi = EconomyUtilsAPI.api
+}
+```
+
 ### depositPlayer メソッド
 プレイヤーの口座にお金を入金します。
 #### 引数
@@ -41,3 +69,26 @@ DEPOSIT(入金) か WITHDRAW(出金) なのかはAPI側が自動でデータベ�
 **ショップでの購入時**  
 アクション: `QuickShopで購入`  
 理由: `DIAMOND(1個)(ショップID: 918)`
+
+### getBalance メソッド
+プレイヤーの所持金を取得します。
+
+#### 引数
+| 引数     | 型      | 説明         |
+|--------|--------|------------|
+| uuid   | UUID   | プレイヤーのUUID |
+
+#### 返り値
+Double: プレイヤーの所持金
+
+### hasMoney(UUID) メソッド
+プレイヤーがお金を持っているかを取得します
+
+#### 引数
+| 引数     | 型      | 説明         |
+|--------|--------|------------|
+| uuid   | UUID   | プレイヤーのUUID |
+
+#### 返り値
+true → 持っている  
+false → 持っていない
