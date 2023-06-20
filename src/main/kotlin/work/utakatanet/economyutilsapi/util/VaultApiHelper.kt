@@ -8,6 +8,9 @@ class VaultApiHelper {
 
     private val vaultEconomy = EconomyUtilsAPI.vaultEconomy
 
+    /**
+     * 入金
+     */
     fun depositPlayer(uuid: UUID, amount: Double) {
 
         val player = Bukkit.getOfflinePlayer(uuid)
@@ -19,6 +22,9 @@ class VaultApiHelper {
 
     }
 
+    /**
+     * 出金
+     */
     fun withdrawPlayer(uuid: UUID, amount: Double) {
 
         val player = Bukkit.getOfflinePlayer(uuid)
@@ -30,15 +36,24 @@ class VaultApiHelper {
 
     }
 
+    /**
+     * 所持金取得
+     */
     fun getPlayerBalance(uuid: UUID): Double {
         val player = Bukkit.getOfflinePlayer(uuid)
         return vaultEconomy.getBalance(player)
     }
 
+    /**
+     *  お金を持っているか
+     */
     fun hasMoney(uuid: UUID): Boolean {
         return getPlayerBalance(uuid) > 0.0
     }
 
+    /**
+     * 特定の金額のお金を持っているか
+     */
     fun hasMoney(uuid: UUID, amount: Double): Boolean {
         return getPlayerBalance(uuid) >= amount
     }
