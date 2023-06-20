@@ -13,7 +13,9 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
     private val vaultApiHelper = EconomyUtilsAPI.vaultApiHelper
     private val transactionLogHelper = EconomyUtilsAPI.transactionLogHelper
 
-    // プレイヤーの口座に入金
+    /**
+     * プレイヤーの口座に入金
+     */
     override fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
@@ -33,7 +35,9 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
     }
 
 
-    // プレイヤーの口座から出金
+    /**
+     * プレイヤーの口座から出金
+     */
     override fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
 
@@ -53,19 +57,25 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
     }
 
 
-    // プレイヤーの残高を取得
+    /**
+     * プレイヤーの残高を取得
+     */
     override fun getBalance(uuid: UUID): Double {
         return vaultApiHelper.getPlayerBalance(uuid)
     }
 
 
-    // プレイヤーの残高があるのか確認
+    /**
+     * プレイヤーの残高があるのか確認
+     */
     override fun hasMoney(uuid: UUID): Boolean {
         return vaultApiHelper.hasMoney(uuid)
     }
 
 
-    // 指定した金額以上の残高があるか確認
+    /**
+     * 指定した金額以上の残高があるか確認
+     */
     override fun hasMoney(uuid: UUID, amount: Double): Boolean {
         return vaultApiHelper.hasMoney(uuid, amount)
     }
