@@ -1,5 +1,6 @@
 package work.utakatanet.economyutilsapi.util
 
+import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.Bukkit
 import work.utakatanet.economyutilsapi.EconomyUtilsAPI
 import java.util.UUID
@@ -11,28 +12,28 @@ class VaultApiHelper {
     /**
      * 入金
      */
-    fun depositPlayer(uuid: UUID, amount: Double) {
+    fun depositPlayer(uuid: UUID, amount: Double): EconomyResponse {
 
         val player = Bukkit.getOfflinePlayer(uuid)
 
         // アカウントがなければ登録
         if (!vaultEconomy.hasAccount(player)) vaultEconomy.createPlayerAccount(player)
 
-        vaultEconomy.depositPlayer(player, amount)
+        return vaultEconomy.depositPlayer(player, amount)
 
     }
 
     /**
      * 出金
      */
-    fun withdrawPlayer(uuid: UUID, amount: Double) {
+    fun withdrawPlayer(uuid: UUID, amount: Double): EconomyResponse {
 
         val player = Bukkit.getOfflinePlayer(uuid)
 
         // アカウントがなければ登録
         if (!vaultEconomy.hasAccount(player)) vaultEconomy.createPlayerAccount(player)
 
-        vaultEconomy.withdrawPlayer(player, amount)
+        return vaultEconomy.withdrawPlayer(player, amount)
 
     }
 

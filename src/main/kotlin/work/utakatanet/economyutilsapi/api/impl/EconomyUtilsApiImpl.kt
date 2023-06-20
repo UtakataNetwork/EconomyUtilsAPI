@@ -1,5 +1,6 @@
 package work.utakatanet.economyutilsapi.api.impl
 
+import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.Bukkit
 import work.utakatanet.economyutilsapi.EconomyUtilsAPI
 import work.utakatanet.economyutilsapi.api.EconomyUtilsApi
@@ -18,17 +19,28 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
      */
     override fun depositPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
+        var afterMoney: Double
+        lateinit var vaultReturn: EconomyResponse
 
-        // キャンセルされたら
-        if (event.isCancelled) return false
+        try {
+            // キャンセルされたら
+            if (event.isCancelled) return false
 
-        // 入金処理
-        vaultApiHelper.depositPlayer(uuid, amount)
-        val afterMoney = vaultApiHelper.getPlayerBalance(uuid)
+            // 入金処理
+            vaultReturn = vaultApiHelper.depositPlayer(uuid, amount)
+            afterMoney = vaultApiHelper.getPlayerBalance(uuid)
+        }catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
+
+        // 成功/失敗判定
+        if (!vaultReturn.transactionSuccess()) {
+            return false
+        }
 
         // ロギング処理
         return transactionLogHelper.addTransactionLog(uuid, TransactionType.DEPOSIT, afterMoney, amount, action, reason)
-
     }
     override fun depositPlayer(uuid: UUID, amount: BigDecimal, action: String, reason: String): Boolean {
         return depositPlayer(uuid, amount.toDouble(), action, reason)
@@ -40,13 +52,25 @@ class EconomyUtilsApiImpl: EconomyUtilsApi {
      */
     override fun withdrawPlayer(uuid: UUID, amount: Double, action: String, reason: String): Boolean {
         val event = TransactionEvent(Bukkit.getOfflinePlayer(uuid), TransactionType.DEPOSIT, amount, reason)
+        var afterMoney: Double
+        lateinit var vaultReturn: EconomyResponse
 
-        // キャンセルされたら
-        if (event.isCancelled) return false
+        try {
+            // キャンセルされたら
+            if (event.isCancelled) return false
 
-        // 出金処理
-        vaultApiHelper.withdrawPlayer(uuid, amount)
-        val afterMoney = vaultApiHelper.getPlayerBalance(uuid)
+            // 出金処理
+            vaultReturn = vaultApiHelper.withdrawPlayer(uuid, amount)
+            afterMoney = vaultApiHelper.getPlayerBalance(uuid)
+        }catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
+
+        // 成功/失敗判定
+        if (!vaultReturn.transactionSuccess()) {
+            return false
+        }
 
         // ロギング処理
         return transactionLogHelper.addTransactionLog(uuid, TransactionType.WITHDRAW, afterMoney, amount, action, reason)
