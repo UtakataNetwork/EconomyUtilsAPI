@@ -1,4 +1,4 @@
-package work.utakatanet.economyutilsapi.data
+package com.github.kuripasanda.economyutilsapi.data
 
 enum class TransactionType {
     DEPOSIT, // 入金

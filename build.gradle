@@ -6,12 +6,12 @@ plugins {
 
 jar {
     manifest {
-        attributes "Main-Class" : "work.utakatanet.economyutilsapi.EconomyUtilsAPI"
+        attributes "Main-Class" : "com.github.kuripasanda.economyutilsapi.EconomyUtilsAPI"
     }
 }
 
 group = 'work.utakatanet'
-version = '1.0.1'
+version = '1.0.2'
 
 repositories {
     mavenCentral()

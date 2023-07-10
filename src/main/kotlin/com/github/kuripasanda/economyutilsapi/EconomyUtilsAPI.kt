@@ -1,14 +1,14 @@
-package work.utakatanet.economyutilsapi
+package com.github.kuripasanda.economyutilsapi
 
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
-import work.utakatanet.economyutilsapi.api.EconomyUtilsApi
-import work.utakatanet.economyutilsapi.api.impl.EconomyUtilsApiImpl
+import com.github.kuripasanda.economyutilsapi.api.EconomyUtilsApi
+import com.github.kuripasanda.economyutilsapi.api.impl.EconomyUtilsApiImpl
 
-import work.utakatanet.economyutilsapi.util.DatabaseHelper
-import work.utakatanet.economyutilsapi.util.TransactionLogHelper
-import work.utakatanet.economyutilsapi.util.VaultApiHelper
+import com.github.kuripasanda.economyutilsapi.util.DatabaseHelper
+import com.github.kuripasanda.economyutilsapi.util.TransactionLogHelper
+import com.github.kuripasanda.economyutilsapi.util.VaultApiHelper
 
 
 class EconomyUtilsAPI : JavaPlugin() {

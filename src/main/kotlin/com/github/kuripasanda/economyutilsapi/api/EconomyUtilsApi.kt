@@ -1,4 +1,4 @@
-package work.utakatanet.economyutilsapi.api
+package com.github.kuripasanda.economyutilsapi.api
 
 import java.math.BigDecimal
 import java.util.UUID

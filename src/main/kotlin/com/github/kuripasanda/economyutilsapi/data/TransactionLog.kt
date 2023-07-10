@@ -1,4 +1,4 @@
-package work.utakatanet.economyutilsapi.data
+package com.github.kuripasanda.economyutilsapi.data
 
 import org.bukkit.OfflinePlayer
 import java.sql.Timestamp

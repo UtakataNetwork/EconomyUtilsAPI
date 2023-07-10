@@ -1,8 +1,8 @@
-package work.utakatanet.economyutilsapi.util
+package com.github.kuripasanda.economyutilsapi.util
 
 import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.Bukkit
-import work.utakatanet.economyutilsapi.EconomyUtilsAPI
+import com.github.kuripasanda.economyutilsapi.EconomyUtilsAPI
 import java.util.UUID
 
 class VaultApiHelper {

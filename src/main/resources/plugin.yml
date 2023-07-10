@@ -1,6 +1,8 @@
 name: EconomyUtilsAPI
 version: '${version}'
-main: work.utakatanet.economyutilsapi.EconomyUtilsAPI
+main: com.github.kuripasanda.economyutilsapi.EconomyUtilsAPI
+authors:
+  - kuripasanda
 api-version: 1.19
 
 depend:

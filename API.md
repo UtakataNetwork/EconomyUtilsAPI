@@ -1,4 +1,5 @@
 # EconomyUtilsAPI
+対応バージョン: [1.0.2](https://github.com/UtakataNetwork/EconomyUtilsAPI/releases/tag/v1.0.2)
 
 ## APIを取得する
 API取得の例です。  

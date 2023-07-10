@@ -1,10 +1,10 @@
-package work.utakatanet.economyutilsapi.api.event
+package com.github.kuripasanda.economyutilsapi.api.event
 
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Cancellable
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
-import work.utakatanet.economyutilsapi.data.TransactionType
+import com.github.kuripasanda.economyutilsapi.data.TransactionType
 
 class TransactionEvent(
     val owner: OfflinePlayer,

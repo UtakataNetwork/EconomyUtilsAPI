@@ -1,11 +1,11 @@
-package work.utakatanet.economyutilsapi.api.impl
+package com.github.kuripasanda.economyutilsapi.api.impl
 
 import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.Bukkit
-import work.utakatanet.economyutilsapi.EconomyUtilsAPI
-import work.utakatanet.economyutilsapi.api.EconomyUtilsApi
-import work.utakatanet.economyutilsapi.api.event.TransactionEvent
-import work.utakatanet.economyutilsapi.data.TransactionType
+import com.github.kuripasanda.economyutilsapi.EconomyUtilsAPI
+import com.github.kuripasanda.economyutilsapi.api.EconomyUtilsApi
+import com.github.kuripasanda.economyutilsapi.api.event.TransactionEvent
+import com.github.kuripasanda.economyutilsapi.data.TransactionType
 import java.math.BigDecimal
 import java.util.*
 

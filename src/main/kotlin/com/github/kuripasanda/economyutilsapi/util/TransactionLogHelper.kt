@@ -1,10 +1,10 @@
-package work.utakatanet.economyutilsapi.util
+package com.github.kuripasanda.economyutilsapi.util
 
 import org.bukkit.Bukkit
-import work.utakatanet.economyutilsapi.EconomyUtilsAPI
-import work.utakatanet.economyutilsapi.api.event.TransactionEvent
-import work.utakatanet.economyutilsapi.data.TransactionLog
-import work.utakatanet.economyutilsapi.data.TransactionType
+import com.github.kuripasanda.economyutilsapi.EconomyUtilsAPI
+import com.github.kuripasanda.economyutilsapi.api.event.TransactionEvent
+import com.github.kuripasanda.economyutilsapi.data.TransactionLog
+import com.github.kuripasanda.economyutilsapi.data.TransactionType
 import java.util.UUID
 
 class TransactionLogHelper(private val dbh: DatabaseHelper) {
