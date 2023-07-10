@@ -12,7 +12,7 @@ jar {
 }
 
 group = 'work.utakatanet'
-version = '1.0.2'
+version = '1.0.3'
 
 repositories {
     mavenCentral()
@@ -67,7 +67,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId = 'com.github.kuripasanda'
                 artifactId = 'EconomyUtilsApi'
-                version = '1.0.2'
+                version = '1.0.3'
             }
         }
     }
