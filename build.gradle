@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.9.0-Beta'
     id 'com.github.johnrengelman.shadow' version '8.+' // FatJar用
+    id 'maven-publish'
 }
 
 jar {
@@ -58,4 +59,16 @@ processResources {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.kuripasanda'
+                artifactId = 'EconomyUtilsApi'
+                version = '1.0.2'
+            }
+        }
+    }
 }
