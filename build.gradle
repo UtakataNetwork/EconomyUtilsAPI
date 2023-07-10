@@ -11,9 +11,6 @@ jar {
     }
 }
 
-group = 'com.github.kuripasanda'
-version = '1.0.3'
-
 repositories {
     mavenCentral()
     maven {
@@ -31,6 +28,15 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT" // SpigotAPI
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8" // Kotlin
     compileOnly "com.github.MilkBowl:VaultAPI:1.7" // VaultAPI
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    group = 'com.github.kuripasanda'
+    version = '1.0.3'
 }
 
 def targetJavaVersion = 17
